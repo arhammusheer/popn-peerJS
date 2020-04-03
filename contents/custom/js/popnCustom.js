@@ -5,6 +5,7 @@
     var peerID = document.getElementById('peerIDinput');
     var myID = null;
     var myStream = null;
+    var disconnectButton = document.getElementById("DisconnectButton");
     var connectButton = document.getElementById("ConnectButton");
     var sendMessageBox = document.getElementById("chat-message-input");
     var myVideoBox = document.getElementById("myVideoBox");
@@ -14,6 +15,11 @@
     function initialize(){
         peer =  new Peer(null,{
             debug:2,
+        });
+        peer.on('connection', function(dataConnect){
+            dataConnection = dataConnect;
+            console.log("connected to : " + dataConnection.peer);
+            dataConn();
         });
 
         peer.on('open', function(id){
@@ -45,13 +51,11 @@
 
     function dataConn() {
 
-        if (dataConnection){
-            dataConnection.close();
+        if (dataConnection === null){
+            dataConnection = peer.connect(peerID.value,{
+                metadata: myID,
+            });
         }
-
-        dataConnection = peer.connect(peerID.value,{
-            metadata: myID,
-        });
 
         dataConnection.on('open', function(){
             console.log("connected to : " + dataConnection.peer);
@@ -85,7 +89,13 @@
             chatMessageButton.click();
     }
 
-    connectButton.addEventListener('click',dataConn);
+    connectButton.onclick = function (){
+        dataConn();
+    }
+
+    disconnectButton.onclick = function (){
+        dataConnection.close();
+    }
 
     initialize();
 })();

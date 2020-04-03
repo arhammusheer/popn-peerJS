@@ -1,0 +1,30 @@
+{
+  "name": "popn-webrtc",
+  "version": "0.1.0",
+  "description": "A simple webrtc app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arhammusheer/popn-webrtc.git"
+  },
+  "keywords": [
+    "webrtc"
+  ],
+  "author": "arhammusheer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arhammusheer/popn-webrtc/issues"
+  },
+  "homepage": "https://github.com/arhammusheer/popn-webrtc#readme",
+  "devDependencies": {
+    "electron": "^8.2.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.1"
+  }
+}

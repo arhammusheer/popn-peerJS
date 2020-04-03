@@ -6,6 +6,7 @@ function createWindow () {
   let win = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: __dirname + '/Icon/Icon.icns',
     webPreferences: {
       nodeIntegration: true
     }
@@ -13,6 +14,6 @@ function createWindow () {
 
   // and load the index.html of the app.
   win.loadFile('html/index.html')
+  win.setMenu(null);
 }
-
 app.whenReady().then(createWindow)

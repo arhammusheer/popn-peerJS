@@ -12,7 +12,6 @@
     <title>popN</title>
   </head>
   <body>
-    <center><p>Status : <span id="connectionStatus">Awaiting ID</span></p></center>
     <div class="jumbotron"> 
       <small class="form-text text-muted">Your ID</small>
       <input class="form-control" placeholder="Your ID will appear here........please wait" id="mypeerID" disabled />     
@@ -27,6 +26,7 @@
           </div>
         </form>
       </div>
+      <center><p>Status : <span id="connectionStatus">Awaiting ID</span></p></center>
     </div>
     <div class="container" id="menuBox" hidden>
       <center>
@@ -58,9 +58,8 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script>let $ = require('jquery');</script>
-    <script>require('popper.js');</script>
-    <script>require('bootstrap');</script>
     <script src="https://cdn.jsdelivr.net/npm/peerjs@0.3.20/dist/peer.min.js"></script>
+    <script src="../contents/custom/js/peerJSconnection.js"></script>
     <script src="../contents/custom/js/popnCustom.js"></script>
   </body>
 </html>

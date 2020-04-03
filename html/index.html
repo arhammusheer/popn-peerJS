@@ -4,17 +4,31 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../contents/bootstrap/css/cyborg.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../contents/custom/css/popnCustom.css">
     <title>popN</title>
   </head>
-  <body>
+  <body style="font-family: 'Montserrat';">
     
-    <div class="sidenav">
-        <a href="websocketRoom.html">Connect to Websocket Server</a>
+    <nav class="navbar navbar-dark bg-secondary">
+      <a class="navbar-brand" href="#" style="font-family: 'Bungee Shade';">popN-chat</a>
+      <button class="btn btn-secondary" onclick="window.top.close(); return false">&times;</button>
+    </nav>
+    <br>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">This is popN webchat</h1>
+        <p class="lead">A simple app that seamlessly integrate with your popN account and allow completely encrypted peer to peer video and audio chat without any hassle.</p>
+        <hr class="my-4">
+        <h5>How it works?</h5>
+        <p>We route your connection to the other person or several others through hundreds of public and private routing servers. Each call and each peer is has a different route ensuring no traceback possible.</p>
+        <a href="websocketRoom.html" class="btn btn-primary">New connection</a>
+      </div>
     </div>
 
     <!-- Optional JavaScript -->
@@ -22,6 +36,5 @@
     <script>let $ = require('jquery');</script>
     <script>require('popper.js');</script>
     <script>require('bootstrap');</script>
-    <script src="../contents/custom/js/popnCustom.js"></script>
   </body>
 </html>

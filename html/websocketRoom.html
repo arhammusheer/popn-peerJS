@@ -12,18 +12,53 @@
     <title>popN</title>
   </head>
   <body>
-    <button onclick="init()">Connect</button>
-    <div>
-      <video id="video" autoplay></video>
-      <canvas id="canvas" ></canvas>
+    <div class="jumbotron"> 
+      <small class="form-text text-muted">Your ID</small>
+      <input class="form-control" placeholder="Your ID will appear here........please wait" id="mypeerID" disabled />     
+      <div id="connectionBox" hidden>
+        <!--Connection Column-->
+        <form>
+          <div class="form-group">
+            <small class="form-text text-muted">Receiver's ID here</small>
+            <input class="form-control" placeholder="enter the peer's ID" id="peerIDinput"/>
+            <button class="btn btn-primary" id="ConnectButton" type="button">Connect</button>
+          </div>
+        </form>
+      </div>
     </div>
-    
-
+    <div class="container" id="menuBox" hidden>
+      <center>
+        <button class="btn btn-primary" id="toggleChatButton"><span id="chatToggleControl">Connect</span> Text Chat</button>
+        <button class="btn btn-primary" id="toggleCallButton"><span id="callToggleControl">Connect</span> Video Call</button>
+        <button class="btn btn-primary" id="AssignNewPeerButton"><span id="newPeerControl">Assign New Peer</button>
+      </center>
+    </div>
+    <!--Call column-->
+    <div id="callBox" hidden>
+      <div id="myVideoDiv">
+        <!--My video-->
+        <video id="myVideoBox"></video>
+        <!--Peer Video-->
+        <video id="peerVideoBox"></video>
+      </div>
+    </div>
+    <!--chat column-->
+    <div class="container">
+      <center>
+        <div id="chatBox">
+          <textarea class="form-control" id="chat-log" cols="100" rows="20" disabled></textarea><br>
+          <input class="form-control" id="chat-message-input" type="text" size="100">&nbsp;
+          <button class="btn btn-primary" id="chat-message-submit" type="button" value="Send">Send</button>
+        </div> 
+      </center>
+    </div>
+        
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script>let $ = require('jquery');</script>
     <script>require('popper.js');</script>
     <script>require('bootstrap');</script>
+    <script src="https://cdn.jsdelivr.net/npm/peerjs@0.3.20/dist/peer.min.js"></script>
     <script src="../contents/custom/js/popnCustom.js"></script>
   </body>
 </html>

@@ -28,21 +28,15 @@
       </div>
       <center><p>Status : <span id="connectionStatus">Awaiting ID</span></p></center>
     </div>
-    <div class="container" id="menuBox" hidden>
-      <center>
-        <button class="btn btn-primary" id="toggleChatButton"><span id="chatToggleControl">Connect</span> Text Chat</button>
-        <button class="btn btn-primary" id="toggleCallButton"><span id="callToggleControl">Connect</span> Video Call</button>
-        <button class="btn btn-primary" id="AssignNewPeerButton"><span id="newPeerControl">Assign New Peer</button>
-      </center>
-    </div>
     <!--Call column-->
-    <div id="callBox" hidden>
-      <div id="myVideoDiv">
-        <!--My video-->
-        <video id="myVideoBox"></video>
-        <!--Peer Video-->
-        <video id="peerVideoBox"></video>
-      </div>
+    <div id="callBox">
+      <button class="btn btn-success" id="ConnectCall" type="button">Call</button>
+      <button class="btn btn-danger" id="DisconnectCall" type="button">HangUp</button>
+      <br>
+      <!--My video-->
+      <video id="myVideoBox"></video>
+      <!--Peer Video-->
+      <video id="peerVideoBox"></video>
     </div>
     <!--chat column-->
     <div class="container">

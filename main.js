@@ -14,6 +14,6 @@ function createWindow () {
 
   // and load the index.html of the app.
   win.loadFile('html/index.html')
-  win.setMenu(null);
+  //win.setMenu(null);
 }
 app.whenReady().then(createWindow)

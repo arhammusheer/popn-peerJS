@@ -1,18 +1,23 @@
 (function (){
+    //peer connection
     var peer = null;
-    var dataConnection = null;
-    var mediaConnection = null;
-    var peerID = document.getElementById('peerIDinput');
     var myID = null;
+    var peerID = document.getElementById('peerIDinput');
+    //Text
+    var dataConnection = null;
     var status = document.getElementById("connectionStatus");
-    var myStream = null;
     var disconnectButton = document.getElementById("DisconnectButton");
     var connectButton = document.getElementById("ConnectButton");
-    var sendMessageBox = document.getElementById("chat-message-input");
+    var sendMessageBox = document.getElementById("chat-message-input");    
+    var chatMessageButton = document.getElementById("chat-message-submit");
+    //Calling
+    var mediaConnection = null;
+    var myStream = null;
+    var connectCall = document.getElementById("ConnectCall");
+    var disconnectCall = document.getElementById("DisconnectCall");
     var myVideoBox = document.getElementById("myVideoBox");
     var remoteVideoBox = document.getElementById("remoteVideoBox");
-    var toggleChat = document.getElementById("toggleChatButton");
-    var chatMessageButton = document.getElementById("chat-message-submit");
+
     function initialize(){
         peer =  new Peer(null,{
             debug:2,
@@ -57,6 +62,17 @@
             status.innerHTML = "Error Occured - Retry";
             status.style.color = "red";
         });
+
+        peer.on('call', function( mediaConnect) {
+            myStream = navigator.mediaDevices.getUserMedia({
+                'video': true,
+                'audio': false
+            });
+            mediaConnection = mediaConnect;
+            console.log("Accepting Call")
+            mediaConnection.answer(myStream);
+            mediaConn();
+        });
     };
 
     function dataConn() {
@@ -86,6 +102,28 @@
         });
     };
 
+    function mediaConn() {
+        
+        if (myStream && mediaConnection === null){
+            peer.call(peerID,myStream);
+        };
+        myVideoBox.srcObject = myStream;
+
+        mediaConnection.on('stream', function(remoteStream){
+            remoteVideoBox.srcObject = remoteStream;
+        });
+
+        mediaConnection.on('close', function (){
+            myStream = null;
+            console.log("Call Closed");
+        });
+
+        mediaConnection.on('error', function(err) {
+            console.log(err);
+        });
+
+    };
+
     chatMessageButton.onclick = function(){
         if (dataConnection && dataConnection.open) {
             var msg = sendMessageBox.value;
@@ -112,6 +150,18 @@
     disconnectButton.onclick = function (){
         dataConnection.close();
         dataConnection = null;
+    }
+
+    connectCall.onclick = function (){
+        myStream = navigator.mediaDevices.getUserMedia({
+            'video': true,
+            'audio': false
+        }).then(mediaConn);
+    }
+
+    disconnectCall.onclick = function(){
+        myStream = null;
+        mediaConnection.close();
     }
 
     initialize();
